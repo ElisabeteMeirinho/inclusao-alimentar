@@ -1,20 +1,22 @@
-# Inclusão Alimentar — Cardápios multiempresa v3 (DEMONSTRAÇÃO)
+# Inclusão Alimentar — v6 · Solicitação, aprovação e acompanhamento
 
-## O que mudou
-- Diretório de estabelecimentos fictícios (página inicial de `cardapio/`).
-- Cada empresa tem cardápio, produtos, fotos, taxas e WhatsApp independentes, separados **no armazenamento deste navegador**.
-- URL de cada empresa: `.../cardapio/?empresa=pizzaria-exemplo#menu`.
-- Painel de demonstração permite escolher ou criar empresa, cadastrar pratos com fotografias, informar ingredientes e alergênicos e configurar taxas e WhatsApp.
-- Carrinho e mensagem de WhatsApp usam o estabelecimento atualmente aberto. O cliente confirma o envio no WhatsApp.
+**Protótipo local demonstrativo**, sem autenticação nem banco de dados. Não permite operar empresas reais ou cobrar mensalidades.
 
-## ATENÇÃO: NÃO É SISTEMA MULTIEMPRESA DE PRODUÇÃO
-Os dados são guardados somente no `localStorage` de cada navegador. O link individual de uma empresa criada pelo usuário não compartilha suas informações com outros celulares. Qualquer visitante consegue abrir o painel demonstrativo. Não utilize com clientes reais, dados pessoais reais ou pedidos comerciais.
+## Fluxo demonstrativo
 
-Para disponibilizar empresas reais com links compartilháveis, é necessário backend/banco de dados (ex.: Supabase), login e isolamento de permissões entre empresas, storage para fotos, controles de segurança, privacidade e regras de alergênicos. Pedidos entre dispositivos e notificações não existem nesta versão.
+1. Abra `cardapio/empresa.html`. No bloco de solicitação, informe o nome, contato e ao menos uma alternativa alimentar **ou adaptação responsável**. Sem as duas possibilidades, o sistema apresenta uma mensagem acolhedora e não permite concluir.
+2. A empresa nova entra como **Pendente**, e o editor de produtos fica **oculto**. A análise de até 5 dias úteis é uma meta futura, não um atendimento automático.
+3. Abra `cardapio/gestao.html`. Filtre pendentes, registre justificativa, situação, modalidade financeira e estado da cobrança. Para liberar o editor, aprove e marque pagamento **Em dia**, ou selecione **Parceiro gratuito / isento**.
+4. Volte à área da empresa e selecione a empresa aprovada. Agora ela pode cadastrar produtos, ingredientes individualizados, foto, adicionais, taxas e WhatsApp; o cliente vê só os dados do restaurante escolhido.
+5. A gestão registra um histórico local: solicitações, decisões justificadas, alterações de pratos e taxas, remoções, alertas e revisões. Os critérios Premium são propostos se as três opções forem declaradas, mas não equivalem à certificação.
+6. O estado de cobrança pode ser simulado manualmente: Em dia, aviso, restrito, suspenso. Gratuitos não são bloqueados por falta de pagamento. Não há cobrança real, vencimento automático nem notificações externas.
 
-## Como publicar SEM alterar o site institucional
-No GitHub, entre em `inclusao-alimentar/cardapio/` na branch `main` e envie `index.html`, `styles.css` e `app.js` deste pacote. Substitua só esses três arquivos. A raiz do repositório (`/index.html` e `/styles.css`) pertence ao site institucional, não substitua.
+## AVISO DE SEGURANÇA
 
-Opcional: a capa visual depende da imagem `cardapio/assets/mesa-compartilhada.webp`. Se ela não existir, envie a imagem incluída neste ZIP para aquela subpasta (ou use a foto institucional de acordo com as licenças aplicáveis).
+O GitHub Pages serve arquivos públicos. **Não há login, permissões de acesso, dados compartilhados entre dispositivos ou auditoria inviolável.** Pessoas que abrirem `gestao.html` podem operar a demonstração em seus próprios navegadores. Não cadastre dados reais. Para produção é indispensável backend com autenticação (empresa e administração), permissões por empresa no banco, armazenamento de fotos, logs server-side imutáveis para empresas, webhooks verificados do provedor de pagamento e revisão de segurança/privacidade (LGPD).
 
-Abra `https://elisabetemeirinho.github.io/inclusao-alimentar/cardapio/` após o deploy do GitHub Pages.
+Sem leite/proteínas do leite **não** significa sem lactose. Ausência declarada de glúten na receita não garante adequação para celíacos. Retirar um ingrediente não garante ausência do alergênico por contato cruzado. Uma opção Premium precisa de documentação e validação humana, nunca apenas uma checkbox.
+
+## Publicação sem quebrar o site institucional
+
+O ZIP contém somente a pasta `cardapio/`. No repositório `ElisabeteMeirinho/inclusao-alimentar`, na branch `main`, clique **dentro da pasta `cardapio`** antes de fazer Add file > Upload files. Suba somente os seis arquivos listados: `index.html`, `loja.html`, `empresa.html`, `gestao.html`, `styles.css` e `app.js`. Não envie os arquivos à raiz e não altere `/index.html`, `/styles.css` ou `/script.js` do site institucional. Faça backup antes da atualização.
