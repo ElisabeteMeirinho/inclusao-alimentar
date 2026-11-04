@@ -30,3 +30,7 @@ Para produção, implementar: backend e banco com isolamento por estabelecimento
 ## Publicação de teste
 
 Pode hospedar os arquivos estáticos em GitHub Pages, Netlify ou similar **somente para demonstração**. Recomendo repositório separado do site institucional `inclusao-alimentar`.
+
+
+## Fotos dos pratos (v2)
+No Painel do estabelecimento, clique em Editar e escolha uma foto JPG, PNG ou WebP. A imagem é reduzida no navegador e salva localmente para fins de demonstração. Sem foto, aparece um cartão neutro (não um emoji). Para o uso real por restaurantes e clientes de dispositivos diferentes, será necessário um banco de dados e armazenamento online de imagens; imagens salvas localmente não são compartilhadas entre celulares.
