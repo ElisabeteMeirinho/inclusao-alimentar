@@ -1,36 +1,20 @@
-# Inclusão Alimentar — Cardápio Inclusivo (MVP demonstrativo)
+# Inclusão Alimentar — Cardápios multiempresa v3 (DEMONSTRAÇÃO)
 
-Protótipo estático de cardápio digital inspirado nos fluxos gerais de cardápios web de delivery, **não cópia das marcas ou interfaces de terceiros**.
+## O que mudou
+- Diretório de estabelecimentos fictícios (página inicial de `cardapio/`).
+- Cada empresa tem cardápio, produtos, fotos, taxas e WhatsApp independentes, separados **no armazenamento deste navegador**.
+- URL de cada empresa: `.../cardapio/?empresa=pizzaria-exemplo#menu`.
+- Painel de demonstração permite escolher ou criar empresa, cadastrar pratos com fotografias, informar ingredientes e alergênicos e configurar taxas e WhatsApp.
+- Carrinho e mensagem de WhatsApp usam o estabelecimento atualmente aberto. O cliente confirma o envio no WhatsApp.
 
-## Teste local
+## ATENÇÃO: NÃO É SISTEMA MULTIEMPRESA DE PRODUÇÃO
+Os dados são guardados somente no `localStorage` de cada navegador. O link individual de uma empresa criada pelo usuário não compartilha suas informações com outros celulares. Qualquer visitante consegue abrir o painel demonstrativo. Não utilize com clientes reais, dados pessoais reais ou pedidos comerciais.
 
-Abra `index.html` em seu navegador. Clique em **Painel do estabelecimento** e preencha o número do WhatsApp da loja no formato `55 + DDD + número` para habilitar o botão de envio via WhatsApp no checkout.
+Para disponibilizar empresas reais com links compartilháveis, é necessário backend/banco de dados (ex.: Supabase), login e isolamento de permissões entre empresas, storage para fotos, controles de segurança, privacidade e regras de alergênicos. Pedidos entre dispositivos e notificações não existem nesta versão.
 
-Configure taxas de entrega por bairro e cadastre pratos. No **Cardápio do cliente**, filtre por alergênicos, monte um carrinho, selecione entrega ou retirada e preencha dados do pedido.
+## Como publicar SEM alterar o site institucional
+No GitHub, entre em `inclusao-alimentar/cardapio/` na branch `main` e envie `index.html`, `styles.css` e `app.js` deste pacote. Substitua só esses três arquivos. A raiz do repositório (`/index.html` e `/styles.css`) pertence ao site institucional, não substitua.
 
-## O que funciona
+Opcional: a capa visual depende da imagem `cardapio/assets/mesa-compartilhada.webp`. Se ela não existir, envie a imagem incluída neste ZIP para aquela subpasta (ou use a foto institucional de acordo com as licenças aplicáveis).
 
-- Cardápio responsivo e filtros por alergênicos declarados.
-- Cadastro/edição/exclusão de pratos no navegador.
-- Preços, carrinho, taxa configurável por bairro, total e retirada grátis.
-- Criação e acompanhamento de pedidos **no mesmo navegador** via `localStorage`, inclusive em abas diferentes no mesmo domínio.
-- Aviso sonoro entre abas abertas no navegador, sujeito a permissões e limitações do browser.
-- Botão **Enviar pelo WhatsApp**, que prepara mensagem para o número cadastrado. **O cliente precisa confirmar o envio no WhatsApp**; sem isso o estabelecimento não recebe nada.
-
-## Limitações importantes
-
-**Este é um protótipo, não uma operação de delivery pronta para restaurantes reais.** Dados são armazenados localmente por navegador; diferentes dispositivos não compartilham pedidos, e não existe servidor, controle de acesso, login, backup, emissão fiscal, pagamento online ou notificação remota automática. Publicar o HTML no GitHub Pages não corrige essas limitações. Não use dados reais de clientes nesta demonstração.
-
-Taxas são por bairro, não por distância geográfica. Não há geocodificação nem cálculo de rota. Produtos e preços são fictícios.
-
-Alergênicos são declarados pelo estabelecimento e dependem de conferência humana, incluindo ingredientes compostos, substituições e contato cruzado. Nenhum filtro, selo ou texto do protótipo representa garantia de segurança para pessoas com alergias ou doença celíaca.
-
-Para produção, implementar: backend e banco com isolamento por estabelecimento, autenticação robusta, regras de acesso no servidor, checkout transacional, notificações remotas com fila/retry, controles antifraude/spam, backups, logs, política de privacidade e segurança para LGPD, além de validação das regras de alergênicos por especialistas.
-
-## Publicação de teste
-
-Pode hospedar os arquivos estáticos em GitHub Pages, Netlify ou similar **somente para demonstração**. Recomendo repositório separado do site institucional `inclusao-alimentar`.
-
-
-## Fotos dos pratos (v2)
-No Painel do estabelecimento, clique em Editar e escolha uma foto JPG, PNG ou WebP. A imagem é reduzida no navegador e salva localmente para fins de demonstração. Sem foto, aparece um cartão neutro (não um emoji). Para o uso real por restaurantes e clientes de dispositivos diferentes, será necessário um banco de dados e armazenamento online de imagens; imagens salvas localmente não são compartilhadas entre celulares.
+Abra `https://elisabetemeirinho.github.io/inclusao-alimentar/cardapio/` após o deploy do GitHub Pages.
