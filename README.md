@@ -28,3 +28,4 @@ O pedido gera uma mensagem e abre o WhatsApp informado pela empresa. O cliente a
 ## Parceria e mensalidade
 
 Critérios e preços estão ilustrativos, **não são regras comerciais já definidas**. A administração revisa manualmente as condições antes de aprovar/descontar/isentar. Distinguimos *sem leite*, *sem lactose*, *sem glúten* e necessidades de celíacos e alérgicos. Não use a ausência de uma declaração de alergênico como prova de segurança; informações alimentares dependem da responsabilidade do fornecedor, controle de preparo e contato cruzado.
+<!-- Solicitação de nova publicação do GitHub Pages -->
