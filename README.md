@@ -19,3 +19,7 @@ Os números de apoio e o andamento das ideias devem ser consultados diretamente 
 ## Importante sobre o cardápio
 
 A pasta `cardapio/` contém um protótipo **demonstrativo**, não uma plataforma operacional. Os dados são salvos localmente no navegador. O bloqueio visual do cadastro de produtos antes da aprovação não é controle de acesso seguro: para empresas reais, é necessário backend com autenticação, permissões verificadas no servidor, banco de dados, armazenamento e conformidade com a LGPD. Não use dados de empresas ou clientes reais neste protótipo.
+
+
+## Firebase (V9)
+O cadastro e a aprovacao de empresas usam Firebase Authentication e Firestore. Configure como descrito em `INSTRUCOES-FIREBASE.md`. Nao esta ativo apenas por publicar no GitHub Pages.
