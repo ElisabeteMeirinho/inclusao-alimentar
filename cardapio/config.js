@@ -2,7 +2,7 @@
 // Copie os campos em Firebase Console > Configuracoes do projeto > Seus apps > Web.
 // NAO coloque senhas, chaves de contas de servico, tokens privados nem arquivos JSON administrativos aqui.
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+window.INCLUSAO_FIREBASE_CONFIG = {
   apiKey: "AIzaSyDluzXkJLHL5OflPL-7vKVzAHl5tPJ7ZwU",
   authDomain: "inclusao-alimentar.firebaseapp.com",
   projectId: "inclusao-alimentar",
