@@ -23,3 +23,12 @@ A pasta `cardapio/` contém um protótipo **demonstrativo**, não uma plataforma
 
 ## Firebase (V9)
 O cadastro e a aprovacao de empresas usam Firebase Authentication e Firestore. Configure como descrito em `INSTRUCOES-FIREBASE.md`. Nao esta ativo apenas por publicar no GitHub Pages.
+
+
+## V10 — apresentação do Cardápio Inclusivo
+
+- O menu institucional agora direciona para `cardapio/apresentacao.html`, uma página pública com explicação da ferramenta, valores propostos e inscrição de parceiros.
+- A vitrine demonstrativa continua em `cardapio/index.html`; o cadastro em `cardapio/empresa.html`, a gestão em `cardapio/gestao.html`.
+- O CSS do cabeçalho foi ajustado para evitar que títulos do menu quebrem linhas no desktop. Em telas menores, o menu passa a ser recolhível.
+- Valores anunciados: padrão R$ 39,90/mês, reduzido R$ 19,90/mês, possibilidade de isenção mediante avaliação. Não há cobrança automatizada.
+- A regra de elegibilidade e a isenção dependem de revisão responsável; a ausência declarada de ingredientes não certifica ausência de alérgenos.

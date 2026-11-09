@@ -208,3 +208,64 @@ p{margin:0 0 14px;line-height:1.58}
 .proposal-arrow-mobile{display:none}
 @media(max-width:1050px){.proposal-arrow-desktop{display:none}.proposal-arrow-mobile{display:inline}}
 .proposal-link:hover,.proposal-link:focus-visible{color:var(--coral-dark)}
+
+
+/* V10 — navegação desktop em uma linha, sem alterar o layout do conteúdo. */
+@media (min-width:1181px){
+  .site-header .header-inner.shell{width:min(1510px,calc(100% - 48px));grid-template-columns:auto minmax(0,1fr) auto;gap:16px;min-height:84px}
+  .site-header .brand{min-width:0;flex-shrink:0}
+  .site-header .brand-title{font-size:clamp(23px,2vw,31px);white-space:nowrap}
+  .site-header .brand-subtitle{font-size:clamp(8px,.7vw,11px);letter-spacing:clamp(1px,.13vw,2.5px);white-space:nowrap}
+  .site-header .site-menu{display:flex;justify-content:center;align-items:center;gap:clamp(10px,1.25vw,22px);flex-wrap:nowrap;min-width:0}
+  .site-header .site-menu a{white-space:nowrap;flex-shrink:0;font-size:clamp(12px,1.03vw,15px);letter-spacing:-.15px}
+  .site-header .header-right{gap:clamp(7px,.9vw,14px);flex-shrink:0}
+  .site-header .social-links{gap:clamp(6px,.65vw,12px)}
+  .site-header .social-links svg{width:18px;height:18px}
+  .site-header .header-cta{padding:13px clamp(13px,1.4vw,22px);font-size:14px}
+}
+@media (min-width:1181px) and (max-width:1330px){
+  .site-header .social-links{display:none}
+}
+@media (max-width:1180px){
+  .site-header .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand toggle" "menu menu";padding:14px 0;gap:10px}
+  .site-header .brand{grid-area:brand;min-width:0}
+  .site-header .menu-toggle{display:block;grid-area:toggle;justify-self:end}
+  .site-header .site-menu{grid-area:menu;display:none;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 0 8px}
+  .site-header .site-menu.open{display:flex}
+  .site-header .header-right{display:none}
+}
+
+/* Página pública de apresentação do Cardápio Inclusivo. */
+.commercial-page{background:#faf5eb}
+.commercial-hero{background:var(--green);color:#fff;padding:76px 0 80px}
+.commercial-hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.75fr);gap:60px;align-items:center}
+.commercial-hero h1{color:#fff;font-size:clamp(44px,5vw,74px);line-height:1.06;max-width:850px}
+.commercial-hero .lead{color:#e9f0ec;font-size:19px;max-width:730px;line-height:1.65}
+.commercial-hero .hero-actions{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.commercial-hero-note{background:#fff9f0;color:var(--green);padding:34px;border-radius:24px;box-shadow:var(--shadow)}
+.commercial-hero-note h2{font-size:30px}
+.commercial-hero-note p{color:#4f605b}
+.commercial-hero-note a{color:var(--coral-dark);font-weight:800}
+.commercial-section{padding:72px 0}
+.commercial-section h2{font-size:clamp(32px,3.2vw,48px);margin-bottom:18px}
+.commercial-intro{max-width:820px;color:var(--muted);font-size:18px;margin-bottom:35px}
+.commercial-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.commercial-feature{background:#fff;border:1px solid #e9e0d3;border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+.commercial-feature .feature-num{font-weight:900;color:var(--coral);letter-spacing:2px;margin-bottom:15px}
+.commercial-feature h3{font-size:25px}
+.commercial-feature p{color:var(--muted);margin-bottom:0}
+.commercial-pricing{background:#f4ede1;border-top:1px solid #e5d9ca;border-bottom:1px solid #e5d9ca}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.pricing-card{background:#fffdfa;border:1px solid #e6dccc;border-radius:25px;padding:30px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+.pricing-card.emphasis{border:2px solid var(--coral)}
+.pricing-chip{align-self:flex-start;color:var(--coral-dark);background:#f9e4d7;padding:7px 12px;border-radius:100px;font-size:12px;letter-spacing:.8px;font-weight:900;text-transform:uppercase}
+.pricing-card h3{font-size:29px;margin:5px 0}
+.pricing-card .price{color:var(--green);font-size:44px;font-weight:800;letter-spacing:-1px;line-height:1.1}
+.pricing-card .price small{font-size:15px;color:var(--muted);font-weight:600;letter-spacing:0}
+.pricing-card p{color:var(--muted);font-size:16px;flex:1}
+.pricing-card .btn{align-self:flex-start;font-size:14px}
+.commercial-footnote{color:#6e6760;font-size:13px;margin-top:22px;max-width:980px}
+.commercial-cta{text-align:center;max-width:850px;margin:0 auto}
+.commercial-cta p{color:var(--muted);font-size:18px}
+.commercial-cta .btn{margin-top:10px}
+@media(max-width:950px){.commercial-hero-grid{grid-template-columns:1fr;gap:26px}.pricing-grid,.commercial-features{grid-template-columns:1fr}.commercial-hero{padding:50px 0}.commercial-section{padding:44px 0}}
