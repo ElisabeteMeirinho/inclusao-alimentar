@@ -54,6 +54,73 @@ service cloud.firestore {
         && request.resource.data.createdAt == request.time;
       allow update, delete: if false;
     }
+
+    // Perfis de consumidor: preferências opcionais, privadas. Admin apenas para indicadores.
+    match /consumerProfiles/{uid} {
+      allow get: if isAdmin() || (verified() && request.auth.uid == uid);
+      allow list: if isAdmin();
+      allow create, update: if verified() && request.auth.uid == uid && consumerOnly(uid)
+        && request.resource.data.keys().hasOnly(['email','milk','lactose','gluten','updatedAt'])
+        && request.resource.data.keys().hasAll(['email','milk','lactose','gluten','updatedAt'])
+        && request.resource.data.email == request.auth.token.email
+        && request.resource.data.milk is bool && request.resource.data.lactose is bool
+        && request.resource.data.gluten is bool
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if verified() && request.auth.uid == uid;
+    }
+    function consumerOnly(uid) {
+      return !exists(/databases/$(database)/documents/partnerApplications/$(uid))
+        && !exists(/databases/$(database)/documents/platformAdmins/$(uid));
+    }
+    function approvedMerchant(uid) {
+      return exists(/databases/$(database)/documents/partnerApplications/$(uid))
+        && get(/databases/$(database)/documents/partnerApplications/$(uid)).data.status == 'approved';
+    }
+    match /menuProducts/{id} {
+      // Catálogo público somente para pratos marcados como publicados; dados são declarações do restaurante.
+      allow get, list: if resource.data.published == true
+        || (verified() && resource.data.merchantUid == request.auth.uid) || isAdmin();
+      allow create: if verified() && approvedMerchant(request.auth.uid)
+        && request.resource.data.keys().hasOnly(['merchantUid','merchantName','name','price','ingredients','warnings','adaptations','milkFree','lactoseFree','glutenFree','published','createdAt'])
+        && request.resource.data.keys().hasAll(['merchantUid','merchantName','name','price','ingredients','warnings','adaptations','milkFree','lactoseFree','glutenFree','published','createdAt'])
+        && request.resource.data.merchantUid == request.auth.uid
+        && request.resource.data.merchantName == get(/databases/$(database)/documents/partnerApplications/$(request.auth.uid)).data.businessName
+        && request.resource.data.name is string && request.resource.data.name.size() > 1 && request.resource.data.name.size() <= 100
+        && request.resource.data.ingredients is string && request.resource.data.ingredients.size() > 2 && request.resource.data.ingredients.size() <= 1500
+        && request.resource.data.warnings is string && request.resource.data.warnings.size() > 2 && request.resource.data.warnings.size() <= 1000
+        && request.resource.data.adaptations is string && request.resource.data.adaptations.size() <= 700
+        && request.resource.data.price is number && request.resource.data.price > 0 && request.resource.data.price <= 9999
+        && request.resource.data.milkFree is bool && request.resource.data.lactoseFree is bool && request.resource.data.glutenFree is bool
+        && request.resource.data.published == false && request.resource.data.createdAt == request.time;
+      allow update: if verified() && approvedMerchant(request.auth.uid)
+        && resource.data.merchantUid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['published'])
+        && request.resource.data.published is bool;
+      allow delete: if isAdmin() || (verified() && resource.data.merchantUid == request.auth.uid);
+    }
+    // Pedidos para TESTE: preço/nome conferidos contra o produto publicado, sem pagamento real.
+    match /pilotOrders/{id} {
+      allow get, list: if isAdmin() || (verified() && (resource.data.customerUid == request.auth.uid || resource.data.merchantUid == request.auth.uid));
+      allow create: if verified() && consumerOnly(request.auth.uid)
+        && request.resource.data.keys().hasOnly(['customerUid','customerName','merchantUid','productId','productName','total','status','createdAt'])
+        && request.resource.data.keys().hasAll(['customerUid','customerName','merchantUid','productId','productName','total','status','createdAt'])
+        && request.resource.data.customerUid == request.auth.uid
+        && request.resource.data.customerName is string && request.resource.data.customerName.size() > 0 && request.resource.data.customerName.size() <= 80
+        && request.resource.data.productId is string
+        && exists(/databases/$(database)/documents/menuProducts/$(request.resource.data.productId))
+        && get(/databases/$(database)/documents/menuProducts/$(request.resource.data.productId)).data.published == true
+        && request.resource.data.merchantUid == get(/databases/$(database)/documents/menuProducts/$(request.resource.data.productId)).data.merchantUid
+        && request.resource.data.productName == get(/databases/$(database)/documents/menuProducts/$(request.resource.data.productId)).data.name
+        && request.resource.data.total == get(/databases/$(database)/documents/menuProducts/$(request.resource.data.productId)).data.price
+        && approvedMerchant(request.resource.data.merchantUid)
+        && request.resource.data.status == 'recebido'
+        && request.resource.data.createdAt == request.time;
+      allow update: if verified() && resource.data.merchantUid == request.auth.uid && approvedMerchant(request.auth.uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','updatedAt'])
+        && request.resource.data.status in ['recebido','preparo','concluido','cancelado']
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
     // Nega qualquer outra colecao do projeto.
     match /{path=**} { allow read, write: if false; }
   }

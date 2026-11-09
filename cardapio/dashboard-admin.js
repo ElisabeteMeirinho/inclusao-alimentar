@@ -1,0 +1,10 @@
+import {initializeApp,getApps,getApp} from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js';
+import {getAuth,onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js';
+import {getFirestore,doc,getDoc,getDocs,collection} from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js';
+const cfg=window.INCLUSAO_FIREBASE_CONFIG;if(!cfg?.apiKey)return;
+const app=getApps().length?getApp():initializeApp(cfg),auth=getAuth(app),db=getFirestore(app);
+const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+onAuthStateChanged(auth,async u=>{const box=document.getElementById('platform-stats');if(!box)return;box.classList.add('hidden');if(!u?.emailVerified)return;try{const grant=await getDoc(doc(db,'platformAdmins',u.uid));if(!grant.exists()||grant.data().enabled!==true)return;
+const [p,c,o,menu]=await Promise.all(['partnerApplications','consumerProfiles','pilotOrders','menuProducts'].map(n=>getDocs(collection(db,n))));const orders=o.docs.map(d=>d.data());const total=orders.filter(x=>x.status==='concluido').reduce((s,x)=>s+Number(x.total||0),0);
+box.classList.remove('hidden');document.getElementById('platform-values').innerHTML=[['Restaurantes cadastrados',p.size],['Restaurantes aprovados',p.docs.filter(d=>d.data().status==='approved').length],['Consumidores com perfil',c.size],['Pedidos de teste',o.size],['Pratos cadastrados',menu.size],['Total concluído (simulado)',money(total)]].map(([a,b])=>`<div class="stat"><strong>${b}</strong><span>${a}</span></div>`).join('');
+}catch(e){document.getElementById('platform-values').textContent='Não foi possível consultar as métricas: '+e.message;box.classList.remove('hidden');}});
