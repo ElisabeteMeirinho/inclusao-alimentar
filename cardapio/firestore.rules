@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function verified() { return signedIn() && request.auth.token.email_verified == true; }
+    function isAdmin() { return verified() && exists(/databases/$(database)/documents/platformAdmins/$(request.auth.uid)) && get(/databases/$(database)/documents/platformAdmins/$(request.auth.uid)).data.enabled == true; }
+    function allowedPlan(p) { return p in ['base','reduced','free']; }
+    function allowedStatus(s) { return s in ['pending','approved','rejected','suspended']; }
+    // Administradores sao cadastrados APENAS manualmente pelo Console, nunca pelo site.
+    match /platformAdmins/{uid} {
+      allow get: if verified() && request.auth.uid == uid;
+      allow list, create, update, delete: if false;
+    }
+    match /partnerApplications/{uid} {
+      allow get: if isAdmin() || (verified() && request.auth.uid == uid);
+      allow list: if isAdmin();
+      allow create: if verified() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['ownerUid','ownerEmail','businessName','cnpj','contactName','whatsapp','milkFree','lactoseFree','glutenFree','adaptation','evidence','status','benefit','adminNote','createdAt'])
+        && request.resource.data.keys().hasAll(['ownerUid','ownerEmail','businessName','cnpj','contactName','whatsapp','milkFree','lactoseFree','glutenFree','adaptation','evidence','status','benefit','adminNote','createdAt'])
+        && request.resource.data.ownerUid == uid
+        && request.resource.data.ownerEmail == request.auth.token.email
+        && request.resource.data.businessName is string && request.resource.data.businessName.size() > 1 && request.resource.data.businessName.size() <= 120
+        && request.resource.data.cnpj is string && request.resource.data.cnpj.matches('^[0-9]{14}$')
+        && request.resource.data.contactName is string && request.resource.data.contactName.size() > 1 && request.resource.data.contactName.size() <= 120
+        && request.resource.data.whatsapp is string && request.resource.data.whatsapp.size() > 3 && request.resource.data.whatsapp.size() <= 20
+        && request.resource.data.milkFree is bool && request.resource.data.lactoseFree is bool
+        && request.resource.data.glutenFree is bool && request.resource.data.adaptation is bool
+        && (request.resource.data.milkFree || request.resource.data.lactoseFree || request.resource.data.glutenFree || request.resource.data.adaptation)
+        && request.resource.data.evidence is string && request.resource.data.evidence.size() >= 20 && request.resource.data.evidence.size() <= 2000
+        && request.resource.data.status == 'pending'
+        && request.resource.data.benefit == 'base'
+        && request.resource.data.adminNote == ''
+        && request.resource.data.createdAt == request.time;
+      // Empresa nunca pode atualizar seu proprio registro, nem aprovacao, beneficio ou dados da parceria.
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status','benefit','adminNote','reviewedBy','reviewedAt'])
+        && allowedStatus(request.resource.data.status)
+        && allowedPlan(request.resource.data.benefit)
+        && request.resource.data.adminNote is string && request.resource.data.adminNote.size() <= 1000
+        && request.resource.data.reviewedBy == request.auth.uid
+        && request.resource.data.reviewedAt == request.time;
+      allow delete: if false;
+    }
+    match /partnerAudit/{auditId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin()
+        && request.resource.data.keys().hasOnly(['applicationId','adminUid','status','benefit','adminNote','createdAt'])
+        && request.resource.data.keys().hasAll(['applicationId','adminUid','status','benefit','adminNote','createdAt'])
+        && request.resource.data.adminUid == request.auth.uid
+        && request.resource.data.applicationId is string
+        && allowedStatus(request.resource.data.status)
+        && allowedPlan(request.resource.data.benefit)
+        && request.resource.data.adminNote is string && request.resource.data.adminNote.size() <= 1000
+        && request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+    // Nega qualquer outra colecao do projeto.
+    match /{path=**} { allow read, write: if false; }
+  }
+}
