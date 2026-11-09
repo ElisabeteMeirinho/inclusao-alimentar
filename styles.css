@@ -203,3 +203,8 @@ p{margin:0 0 14px;line-height:1.58}
 .unified-note{font-size:12px;color:#d9e6dd;margin:26px 0 0}
 @media(max-width:1120px){.unified-wrap{grid-template-columns:1fr}.unified-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.unified-card>p{min-height:0}}
 @media(max-width:630px){.unified-cards{grid-template-columns:1fr}.unified-restrictions{padding:38px 0 25px}.unified-card{padding:22px}}
+
+/* Setas do convite às propostas: lateral no desktop, abaixo no celular */
+.proposal-arrow-mobile{display:none}
+@media(max-width:1050px){.proposal-arrow-desktop{display:none}.proposal-arrow-mobile{display:inline}}
+.proposal-link:hover,.proposal-link:focus-visible{color:var(--coral-dark)}
