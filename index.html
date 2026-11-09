@@ -29,7 +29,7 @@
         <a href="#causa">Nossa Causa</a>
         <a href="#restricoes">Entenda as Restrições</a>
         <a href="#propostas">As Propostas</a>
-        <a href="./cardapio/">Cardápio Inclusivo</a>
+        <a href="cardapio/">Cardápio Inclusivo</a>
         <a href="#contato">Contato</a>
       </nav>
 
@@ -111,12 +111,12 @@
         <div class="proposals-intro">
           <p class="eyebrow">NOSSAS PROPOSTAS</p>
           <h2>Duas ideias legislativas<br>por uma alimentação<br>mais inclusiva.</h2>
-          <p>Propostas encaminhadas ao Senado Federal pelo programa e-Cidadania. Atualmente em avaliação. Contamos com seu apoio para que essas ideias cheguem ao debate no Congresso e possam se tornar políticas públicas.</p>
-          <a class="btn btn-primary" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252857" target="_blank" rel="noopener noreferrer">Apoie agora no e-Cidadania <span aria-hidden="true">→</span></a>
+          <p>Propostas encaminhadas ao Senado Federal pelo programa e-Cidadania. Acompanhe a situação de cada ideia e as orientações sobre apoio diretamente nas páginas oficiais do Senado Federal.</p>
+          <a class="btn btn-primary" href="#proposta-seguranca">Conheça as duas propostas <span aria-hidden="true">↓</span></a>
         </div>
 
         <div class="proposal-cards">
-          <article class="proposal-card">
+          <article class="proposal-card" id="proposta-seguranca">
             <div class="proposal-visual visual-1">
               <span class="proposal-number green">01</span>
               <div class="proposal-visual-text">CARDÁPIO</div>
@@ -124,13 +124,13 @@
             <div class="proposal-body">
               <h3>Segurança Alimentar</h3>
               <p>Divulgação de ingredientes e alergênicos em restaurantes, padarias e estabelecimentos similares.</p>
-              <span class="status-badge">Em aguardo de avaliação</span>
-              <div class="proposal-meta">Data: 27/10/2026 <span>|</span> Apoios: 0</div>
-              <a class="proposal-link" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252857" target="_blank" rel="noopener noreferrer">Ver proposta no Senado (ID: 252857) <span aria-hidden="true">↗</span></a>
+              <span class="status-badge">Situação e apoios: consulte o Senado</span>
+              <div class="proposal-meta">Apresentada em 27/10/2026</div>
+              <a class="proposal-link" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252857" target="_blank" rel="noopener noreferrer">Ver a proposta Segurança Alimentar no Senado (ID: 252857) <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="proposal-card">
+          <article class="proposal-card" id="proposta-inclusao">
             <div class="proposal-visual visual-2">
               <span class="proposal-number coral">02</span>
               <div class="proposal-visual-text">OPÇÕES<br>PARA TODOS</div>
@@ -138,9 +138,9 @@
             <div class="proposal-body">
               <h3>Inclusão Alimentar</h3>
               <p>Opções inclusivas em restaurantes e estabelecimentos similares.</p>
-              <span class="status-badge">Em aguardo de avaliação</span>
-              <div class="proposal-meta">Data: 27/10/2026 <span>|</span> Apoios: 0</div>
-              <a class="proposal-link" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252859" target="_blank" rel="noopener noreferrer">Ver proposta no Senado (ID: 252859) <span aria-hidden="true">↗</span></a>
+              <span class="status-badge">Situação e apoios: consulte o Senado</span>
+              <div class="proposal-meta">Apresentada em 27/10/2026</div>
+              <a class="proposal-link" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252859" target="_blank" rel="noopener noreferrer">Ver a proposta Inclusão Alimentar no Senado (ID: 252859) <span aria-hidden="true">↗</span></a>
             </div>
           </article>
         </div>
@@ -157,96 +157,43 @@
       </div>
     </section>
 
-    <section id="causa" class="restrictions-highlight">
-      <div class="shell restrictions-highlight-grid">
-        <div class="restrictions-lead">
-          <h2>Entenda as Restrições<br>Alimentares</h2>
-          <p>Conheça as principais condições alimentares, seus impactos na saúde e na vida cotidiana, com base em fontes científicas confiáveis.</p>
-          <a class="btn btn-outline-cream" href="#restricoes">Ver todas as condições <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="restriction-mini-grid">
-          <article class="mini-card">
-            <div class="mini-icon green">⛨</div>
-            <h3>Alergias alimentares</h3>
-            <p>Reações do sistema imunológico que podem ser graves.</p>
-          </article>
-          <article class="mini-card">
-            <div class="mini-icon coral">≋</div>
-            <h3>Intolerâncias alimentares</h3>
-            <p>Dificuldades para processar determinados componentes.</p>
-          </article>
-          <article class="mini-card">
-            <div class="mini-icon coral">✣</div>
-            <h3>Doença celíaca e glúten</h3>
-            <p>Condição autoimune que exige dieta rigorosa.</p>
-          </article>
-          <article class="mini-card">
-            <div class="mini-icon coral">◔</div>
-            <h3>Outras condições</h3>
-            <p>Necessidades específicas que exigem atenção.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <section class="unified-restrictions" id="restricoes" aria-labelledby="restricoes-title">
+  <div class="shell unified-wrap" id="causa">
+    <div class="unified-heading">
+      <p class="eyebrow eyebrow-light">INFORMAÇÃO COM RESPONSABILIDADE</p>
+      <h2 id="restricoes-title">Entenda as Restrições Alimentares</h2>
+      <p>Conheça as principais condições alimentares, seus impactos na saúde e na vida cotidiana, com base em fontes científicas confiáveis.</p>
+      <p class="unified-small">Nem toda restrição tem a mesma causa ou os mesmos riscos. Informação correta faz a diferença.</p>
+    </div>
+    <div class="unified-cards"><article class="unified-card">
+ <div class="unified-card-icon"><svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+ <h3>Alergias alimentares</h3>
+ <p>Reações do sistema imunológico que podem ser graves.</p>
+ <details><summary>Saiba mais <span aria-hidden="true">⌄</span></summary><div class="unified-card-detail"><p>Podem causar sintomas cutâneos, gastrointestinais ou respiratórios, incluindo anafilaxia. Alguns casos exigem cuidado rigoroso com o contato cruzado.</p><a href="https://www.fda.gov/food/food-labeling-nutrition/food-allergies" target="_blank" rel="noopener noreferrer">Fonte: FDA — Alergias alimentares ↗</a></div></details>
+</article>
+<article class="unified-card">
+ <div class="unified-card-icon"><svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3c-2 0-3 2-3 4s1 3 3 3h4c2 0 3 1 3 3s-1 3-3 3H8c-2 0-3 1-3 3s1 3 3 3"/><path d="M15 3c3 0 5 2 5 5s-2 4-5 4h-1M18 16c2 0 3 1 3 3s-2 3-4 3h-3"/></svg></div>
+ <h3>Intolerâncias alimentares</h3>
+ <p>Dificuldades para digerir determinados componentes.</p>
+ <details><summary>Saiba mais <span aria-hidden="true">⌄</span></summary><div class="unified-card-detail"><p>Intolerância à lactose pode causar gases, cólicas e diarreia. Excluir laticínios sem substituição adequada também pode reduzir a ingestão de cálcio. Não é o mesmo que alergia.</p><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance" target="_blank" rel="noopener noreferrer">Fonte: NIDDK — Intolerância à lactose ↗</a></div></details>
+</article>
+<article class="unified-card">
+ <div class="unified-card-icon"><svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8M7 17l5-5 5 5M7 12l5-5 5 5M9 4l3-2 3 2M5 8l7 7 7-7"/></svg></div>
+ <h3>Doença celíaca e glúten</h3>
+ <p>Condição autoimune que exige dieta rigorosa.</p>
+ <details><summary>Saiba mais <span aria-hidden="true">⌄</span></summary><div class="unified-card-detail"><p>Na doença celíaca, o glúten desencadeia danos ao intestino delgado. Sem tratamento, pode haver anemia, má absorção e prejuízos à saúde óssea.</p><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease" target="_blank" rel="noopener noreferrer">Fonte: NIDDK — Doença celíaca ↗</a></div></details>
+</article>
+<article class="unified-card">
+ <div class="unified-card-icon"><svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></div>
+ <h3>Outras condições</h3>
+ <p>Necessidades específicas que exigem atenção.</p>
+ <details><summary>Saiba mais <span aria-hidden="true">⌄</span></summary><div class="unified-card-detail"><p>Algumas condições metabólicas e clínicas exigem cuidados com ingredientes, nutrientes e preparo. Cada caso precisa ser avaliado de forma específica.</p><a href="https://www.gov.br/saude/pt-br" target="_blank" rel="noopener noreferrer">Fonte: Ministério da Saúde ↗</a></div></details>
+</article></div>
+  </div>
+  <div class="shell"><p class="unified-note">Conteúdo educativo geral, não substitui avaliação médica. Consulte as referências em cada condição. Revisão editorial inicial: outubro de 2026.</p></div>
+</section>
 
-    <section id="restricoes" class="details-section">
-      <div class="shell">
-        <div class="details-head">
-          <div>
-            <p class="eyebrow">INFORMAÇÃO COM RESPONSABILIDADE</p>
-            <h2>Entenda as restrições alimentares</h2>
-          </div>
-          <p>Nem toda restrição tem a mesma causa ou os mesmos riscos. Conheça as diferenças e saiba por que informações precisas fazem tanta diferença.</p>
-        </div>
-
-        <div class="details-grid">
-          <article class="details-card">
-            <div class="details-icon">✳</div>
-            <h3>Alergias alimentares</h3>
-            <p>Reações do sistema imunológico a proteínas alimentares. Algumas podem evoluir para anafilaxia.</p>
-            <details>
-              <summary>Saiba mais</summary>
-              <p>Leite, ovo, amendoim, castanhas, soja, trigo, peixe, crustáceos e gergelim estão entre os alimentos que podem causar alergias. Em alguns casos, pequenas exposições e contato cruzado podem desencadear reações importantes.</p>
-              <a href="https://www.fda.gov/food/food-labeling-nutrition/food-allergies" target="_blank" rel="noopener noreferrer">Fonte: FDA ↗</a>
-            </details>
-          </article>
-          <article class="details-card">
-            <div class="details-icon">≈</div>
-            <h3>Intolerâncias alimentares</h3>
-            <p>Problemas para digerir ou processar certos componentes, como a lactose; não são necessariamente alergias.</p>
-            <details>
-              <summary>Saiba mais</summary>
-              <p>A intolerância à lactose pode causar gases, diarreia, dor abdominal e estufamento. Reduzir laticínios sem substituição adequada pode diminuir a ingestão de cálcio.</p>
-              <a href="https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance" target="_blank" rel="noopener noreferrer">Fonte: NIDDK ↗</a>
-            </details>
-          </article>
-          <article class="details-card">
-            <div class="details-icon">✦</div>
-            <h3>Doença celíaca e glúten</h3>
-            <p>Doença autoimune em que o glúten desencadeia lesões no intestino delgado.</p>
-            <details>
-              <summary>Saiba mais</summary>
-              <p>Sem tratamento, a doença celíaca pode causar problemas de absorção de nutrientes, anemia e prejuízos à saúde óssea. O cuidado com contato cruzado é essencial.</p>
-              <a href="https://www.niddk.nih.gov/health-information/digestive-diseases/celiac-disease" target="_blank" rel="noopener noreferrer">Fonte: NIDDK ↗</a>
-            </details>
-          </article>
-          <article class="details-card">
-            <div class="details-icon">☘</div>
-            <h3>Outras condições</h3>
-            <p>Algumas condições metabólicas e clínicas exigem atenção a ingredientes, nutrientes e preparo.</p>
-            <details>
-              <summary>Saiba mais</summary>
-              <p>Nem toda necessidade alimentar é alergia. Há condições metabólicas, gastrointestinais ou autoimunes que exigem cuidado com ingredientes e composição nutricional.</p>
-              <a href="https://www.gov.br/saude/pt-br" target="_blank" rel="noopener noreferrer">Fonte: Ministério da Saúde ↗</a>
-            </details>
-          </article>
-        </div>
-
-        <p class="source-note">Conteúdo educativo geral, não substitui diagnóstico ou orientação médica. Fontes institucionais indicadas em cada ficha. Revisão editorial inicial: outubro de 2026.</p>
-      </div>
-    </section>
-
-    <section id="contato" class="contact-section">
+<section id="contato" class="contact-section">
       <div class="shell contact-grid">
         <div>
           <p class="eyebrow eyebrow-light">FALE COM A GENTE</p>
@@ -277,6 +224,7 @@
         <a href="#inicio">Início</a>
         <a href="#causa">Nossa Causa</a>
         <a href="#propostas">As Propostas</a>
+        <a href="cardapio/">Cardápio Inclusivo</a>
         <a href="#restricoes">Entenda as Restrições</a>
         <a href="#contato">Contato</a>
       </div>

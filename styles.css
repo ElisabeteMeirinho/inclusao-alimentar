@@ -179,3 +179,27 @@ p{margin:0 0 14px;line-height:1.58}
   .proposal-body h3,.mini-card h3,.details-card h3{font-size:22px}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }
+
+/* v5: seção única, ícones SVG consistentes e conteúdo científico expansível */
+.unified-restrictions{background:#123b2f;color:#fff;padding:46px 0 34px}
+.unified-wrap{display:grid;grid-template-columns:minmax(220px, .8fr) minmax(0,2.7fr);gap:30px;align-items:start}
+.unified-heading h2{color:#fff;font-size:clamp(30px,3vw,45px);line-height:1.07;margin:0 0 15px}
+.unified-heading p:not(.eyebrow){color:#f0f4ef;font-size:16px;line-height:1.55;margin-bottom:15px}
+.unified-heading .unified-small{font-size:13px!important;color:#d1e1d7!important}
+.unified-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.unified-card{background:#fff9f1;color:#153c30;border-radius:16px;padding:22px 17px;min-width:0;box-shadow:0 8px 24px #0a251b22}
+.unified-card-icon{display:grid;place-items:center;width:55px;height:55px;background:#e0e9d9;border-radius:50%;margin-bottom:14px;color:#174b38}
+.unified-card:nth-child(even) .unified-card-icon{background:#f3dfd3;color:#c75a3e}
+.info-icon{width:31px;height:31px;display:block}
+.unified-card h3{font:700 20px/1.12 Georgia,serif;margin:0 0 10px;color:#153c30}
+.unified-card>p{font-size:13px;color:#576962;line-height:1.5;min-height:70px;margin:0 0 14px}
+.unified-card details{border-top:1px solid #e9dfd1;padding-top:12px}
+.unified-card summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:4px;color:#b94f34;font-size:13px;font-weight:800;list-style:none}
+.unified-card summary::-webkit-details-marker{display:none}
+.unified-card details[open] summary span{transform:rotate(180deg)}
+.unified-card-detail{margin-top:13px}
+.unified-card-detail p{color:#50615a;font-size:13px;line-height:1.5}
+.unified-card-detail a{color:#195343;font-size:12px;font-weight:800;text-underline-offset:3px}
+.unified-note{font-size:12px;color:#d9e6dd;margin:26px 0 0}
+@media(max-width:1120px){.unified-wrap{grid-template-columns:1fr}.unified-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.unified-card>p{min-height:0}}
+@media(max-width:630px){.unified-cards{grid-template-columns:1fr}.unified-restrictions{padding:38px 0 25px}.unified-card{padding:22px}}
