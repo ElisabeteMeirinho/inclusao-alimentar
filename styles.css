@@ -837,3 +837,34 @@ p{margin:0 0 14px;line-height:1.58}
 }
 .ia-cardapio-integrado .concept-icon svg { width:34px; height:34px; }
 #cardapio-inclusivo .tool-icon svg { width:42px; height:42px; }
+
+
+/* Ícones da seção “Por que isso importa?” */
+.proposal-why li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  row-gap: 2px;
+  padding-left: 0;
+  align-items: center;
+}
+.proposal-why li::before { content: none !important; display: none !important; }
+.proposal-why .proposal-why-icon {
+  grid-column: 1; grid-row: 1 / span 2;
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #f5e0d2; color: #d45f35;
+}
+.proposal-why li:nth-child(2) .proposal-why-icon { background: #f5e0d2; color: #d45f35; }
+.proposal-why li:nth-child(3) .proposal-why-icon { background: #dfe8d6; color: #174331; }
+.proposal-why .proposal-why-icon svg {
+  width: 24px; height: 24px; display: block; fill: none;
+  stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.proposal-why li strong { grid-column: 2; grid-row: 1; }
+.proposal-why li > span:not(.proposal-why-icon) { grid-column: 2; grid-row: 2; }
+@media (max-width: 1220px) {
+  .proposal-why li { grid-template-columns: 44px minmax(0,1fr); }
+}

@@ -1,8 +1,7 @@
-ATUALIZAÇÃO PONTUAL — ÍCONES DO SITE INCLUSÃO ALIMENTAR
+ATUALIZAÇÃO PONTUAL — ÍCONES DA SEÇÃO “POR QUE ISSO IMPORTA?”
 
-Aplique na raiz do repositório inclusao-alimentar. Substitui index.html e styles.css.
-Os outros arquivos incluídos mantêm a seção de Cardápio Inclusivo integrada e seu exemplo interativo.
+Aplique o conteúdo diretamente na raiz do repositório inclusao-alimentar. Substitua index.html e styles.css pelos arquivos deste ZIP.
 
-Ícones redesenhados em SVG: pilares da página, cards de restrições alimentares e benefícios do Cardápio Inclusivo.
-O ícone de intolerâncias agora representa uma embalagem de leite riscada; o de doença celíaca/glúten representa trigo riscado.
-Preserve as demais pastas e arquivos do repositório.
+Ajuste realizado: inclusão de três ícones SVG desenhados para pessoas, saúde e inclusão; remoção dos círculos vazios e dos traços amarelos. Textos, propostas, links e demais seções foram preservados.
+
+Mantenha as demais pastas e arquivos do repositório.
