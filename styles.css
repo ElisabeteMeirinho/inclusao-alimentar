@@ -455,3 +455,12 @@ p{margin:0 0 14px;line-height:1.58}
   height: 30px !important;
   display: block !important;
 }
+
+/* Ícones Lucide oficiais: escala e alinhamento uniformes nos cards de restrições. */
+.unified-card-icon .lucide {
+  width: 30px;
+  height: 30px;
+  display: block;
+  flex: 0 0 30px;
+  stroke-width: 2;
+}
