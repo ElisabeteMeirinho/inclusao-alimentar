@@ -252,3 +252,65 @@ p{margin:0 0 14px;line-height:1.58}
 .cardapio-guidance-link:hover,.cardapio-guidance-link:focus-visible{background:#174331;color:#fff}
 @media(max-width:1220px){.proposals-layout{grid-template-columns:1fr;gap:24px}.proposal-why{padding-top:0}.proposal-why ul{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.proposal-cards{grid-template-columns:1fr}.proposal-visual{height:190px}.proposal-body p{min-height:0}.proposal-why ul{grid-template-columns:1fr}.cardapio-guidance-inner{grid-template-columns:54px 1fr;gap:12px 16px;padding:20px}.cardapio-symbol{width:48px;height:48px;font-size:30px}.cardapio-guidance h2{white-space:normal;font-size:27px}.cardapio-guidance p,.cardapio-guidance-link{grid-column:1/-1}.cardapio-guidance-link{justify-content:center}}
+
+
+/* Refinos solicitados: cabeçalho em uma linha e iconografia SVG consistente. */
+@media (min-width: 1101px) {
+  .header-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(14px, 1.5vw, 24px);
+    min-height: 82px;
+  }
+  .brand {
+    flex: 0 0 270px;
+    min-width: 0;
+  }
+  .brand-title { white-space: nowrap; font-size: clamp(25px, 2vw, 31px); }
+  .brand-subtitle { white-space: nowrap; letter-spacing: 2px; font-size: 10px; }
+  .site-menu {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: space-between;
+    gap: clamp(10px, 1.2vw, 20px);
+  }
+  .site-menu a {
+    white-space: nowrap;
+    font-size: clamp(13px, 1vw, 15px);
+  }
+  .header-right { flex: 0 0 auto; gap: 14px; }
+  .social-links { gap: 9px; }
+  .header-cta { white-space: nowrap; padding-left: 20px; padding-right: 20px; }
+}
+@media (max-width: 1100px) {
+  .header-inner { display: flex; justify-content: space-between; flex-wrap: wrap; }
+  .brand { min-width: 0; }
+  .brand-title { white-space: nowrap; }
+  .menu-toggle { display: block; margin-left: auto; }
+  .site-menu {
+    display: none;
+    order: 4;
+    flex: 0 0 100%;
+    width: 100%;
+    padding: 10px 0 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .site-menu.is-open { display: flex; }
+  .header-right { margin-left: 0; }
+}
+.pillar-icon svg { width: 31px; height: 31px; display: block; }
+.cardapio-symbol svg { width: 39px; height: 39px; display: block; }
+.summary-chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform .18s ease;
+  margin-right: 3px;
+}
+.unified-card details[open] .summary-chevron {
+  transform: rotate(225deg) translate(-1px, -1px);
+}
