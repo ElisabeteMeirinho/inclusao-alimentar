@@ -377,3 +377,81 @@ p{margin:0 0 14px;line-height:1.58}
 .unified-card-icon {
   flex-shrink: 0;
 }
+
+
+/* V4 — correção definitiva do alinhamento do cabeçalho e pictogramas das restrições. */
+@media (min-width: 1101px) {
+  .site-header .header-inner {
+    display: grid !important;
+    grid-template-columns: 320px minmax(0, 1fr) max-content !important;
+    column-gap: 18px !important;
+    align-items: center !important;
+    min-height: 82px !important;
+  }
+  .site-header .brand {
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 320px !important;
+    margin: 0 !important;
+  }
+  .site-header .brand-title {
+    display: block !important;
+    white-space: nowrap !important;
+    font-size: 29px !important;
+    line-height: 1 !important;
+    letter-spacing: -0.7px !important;
+  }
+  .site-header .brand-subtitle {
+    white-space: nowrap !important;
+    font-size: 9px !important;
+    letter-spacing: 1.65px !important;
+  }
+  .site-header .menu-toggle { display: none !important; }
+  .site-header nav.site-menu {
+    display: flex !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  .site-header nav.site-menu a {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    padding: 8px 0 !important;
+  }
+  .site-header .header-right {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+  .site-header .social-links { gap: 8px !important; }
+  .site-header .social-links svg { width: 17px !important; height: 17px !important; }
+  .site-header .header-cta {
+    padding: 12px 15px !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+  }
+}
+.unified-card-icon {
+  width: 55px !important;
+  height: 55px !important;
+  display: grid !important;
+  place-items: center !important;
+}
+.unified-card-icon .info-icon {
+  width: 30px !important;
+  height: 30px !important;
+  display: block !important;
+}
