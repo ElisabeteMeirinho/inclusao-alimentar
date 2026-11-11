@@ -1,15 +1,8 @@
-ATUALIZAÇÃO DO REPOSITÓRIO EXISTENTE — INCLUSÃO ALIMENTAR
+ATUALIZAÇÃO PONTUAL — ÍCONES DO SITE INCLUSÃO ALIMENTAR
 
-Este pacote é para aplicar NA RAIZ do repositório atual `inclusao-alimentar`.
-Não crie nem mantenha uma pasta `site-institucional/` dentro do repositório.
+Aplique na raiz do repositório inclusao-alimentar. Substitui index.html e styles.css.
+Os outros arquivos incluídos mantêm a seção de Cardápio Inclusivo integrada e seu exemplo interativo.
 
-1. Faça backup dos arquivos atuais `index.html` e `styles.css`.
-2. Extraia o conteúdo deste ZIP diretamente na raiz do repositório, substituindo os arquivos correspondentes e atualizando a pasta `assets`.
-3. Preserve os demais arquivos e pastas já existentes no repositório (por exemplo: `cardapio/`, documentos e configurações).
-4. O menu "Cardápio Inclusivo" agora navega para um guia dentro da própria página institucional.
-5. O guia explica práticas para aplicativos e sites: ingredientes/alergênicos, opções alimentares, personalização e contato cruzado.
-6. Não há link para o sistema de cardápio nesta seção e não há compartilhamento de login ou banco de dados.
-
-IMPORTANTE:
-- Este ZIP não apaga a antiga pasta `cardapio/`; ela deve ser removida somente depois que o conteúdo do novo repositório independente for criado e conferido.
-- Os arquivos `config-parceiro.js` e `script-parceiro.js` deixam de ser usados pelo site institucional. Após confirmar que não há outras referências, podem ser removidos manualmente do repositório.
+Ícones redesenhados em SVG: pilares da página, cards de restrições alimentares e benefícios do Cardápio Inclusivo.
+O ícone de intolerâncias agora representa uma embalagem de leite riscada; o de doença celíaca/glúten representa trigo riscado.
+Preserve as demais pastas e arquivos do repositório.
