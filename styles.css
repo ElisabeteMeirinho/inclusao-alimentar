@@ -314,3 +314,66 @@ p{margin:0 0 14px;line-height:1.58}
 .unified-card details[open] .summary-chevron {
   transform: rotate(225deg) translate(-1px, -1px);
 }
+
+
+/* V3: cabeçalho alinhado sem sobreposição e ícones vetoriais coerentes. */
+@media (min-width: 1101px) {
+  .header-inner {
+    display: grid !important;
+    grid-template-columns: minmax(285px, 0.9fr) minmax(0, 2.4fr) auto !important;
+    align-items: center;
+    gap: clamp(12px, 1.25vw, 22px);
+    min-height: 82px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .brand {
+    min-width: 0 !important;
+    width: 100%;
+  }
+  .brand-title {
+    font-size: clamp(25px, 1.75vw, 30px) !important;
+    white-space: nowrap;
+    letter-spacing: -0.5px;
+  }
+  .brand-subtitle {
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    white-space: nowrap;
+  }
+  .site-menu {
+    display: flex !important;
+    min-width: 0;
+    justify-content: space-between !important;
+    align-items: center;
+    gap: clamp(8px, .9vw, 16px) !important;
+  }
+  .site-menu a {
+    white-space: nowrap !important;
+    font-size: clamp(12px, .88vw, 14px) !important;
+    letter-spacing: -0.15px;
+  }
+  .header-right {
+    gap: clamp(8px, .8vw, 14px) !important;
+    white-space: nowrap;
+  }
+  .social-links { gap: 8px !important; }
+  .header-cta {
+    padding: 13px 16px !important;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+}
+.pillar-icon svg,
+.unified-card-icon svg,
+.cardapio-symbol svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.unified-card-icon svg { width: 29px; height: 29px; }
+.cardapio-symbol svg { width: 37px; height: 37px; }
+.pillar-icon,
+.unified-card-icon {
+  flex-shrink: 0;
+}
