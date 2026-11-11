@@ -210,62 +210,45 @@ p{margin:0 0 14px;line-height:1.58}
 .proposal-link:hover,.proposal-link:focus-visible{color:var(--coral-dark)}
 
 
-/* V10 — navegação desktop em uma linha, sem alterar o layout do conteúdo. */
-@media (min-width:1181px){
-  .site-header .header-inner.shell{width:min(1510px,calc(100% - 48px));grid-template-columns:auto minmax(0,1fr) auto;gap:16px;min-height:84px}
-  .site-header .brand{min-width:0;flex-shrink:0}
-  .site-header .brand-title{font-size:clamp(23px,2vw,31px);white-space:nowrap}
-  .site-header .brand-subtitle{font-size:clamp(8px,.7vw,11px);letter-spacing:clamp(1px,.13vw,2.5px);white-space:nowrap}
-  .site-header .site-menu{display:flex;justify-content:center;align-items:center;gap:clamp(10px,1.25vw,22px);flex-wrap:nowrap;min-width:0}
-  .site-header .site-menu a{white-space:nowrap;flex-shrink:0;font-size:clamp(12px,1.03vw,15px);letter-spacing:-.15px}
-  .site-header .header-right{gap:clamp(7px,.9vw,14px);flex-shrink:0}
-  .site-header .social-links{gap:clamp(6px,.65vw,12px)}
-  .site-header .social-links svg{width:18px;height:18px}
-  .site-header .header-cta{padding:13px clamp(13px,1.4vw,22px);font-size:14px}
-}
-@media (min-width:1181px) and (max-width:1330px){
-  .site-header .social-links{display:none}
-}
-@media (max-width:1180px){
-  .site-header .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"brand toggle" "menu menu";padding:14px 0;gap:10px}
-  .site-header .brand{grid-area:brand;min-width:0}
-  .site-header .menu-toggle{display:block;grid-area:toggle;justify-self:end}
-  .site-header .site-menu{grid-area:menu;display:none;flex-direction:column;align-items:flex-start;gap:10px;padding:12px 0 8px}
-  .site-header .site-menu.open{display:flex}
-  .site-header .header-right{display:none}
-}
+/* Seção discreta da iniciativa parceira — adicionada sem alterar o conteúdo editorial existente. */
+.partner-initiative{padding:58px 0;background:#f2eadc;border-top:1px solid #e3d8c8;border-bottom:1px solid #e3d8c8}
+.partner-initiative-inner{display:grid;grid-template-columns:76px minmax(0,760px);gap:26px;align-items:start;justify-content:center}
+.partner-mark{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#153c30;color:#f8f1e5;font-family:Georgia,serif;font-size:42px}
+.partner-copy h2{font-size:clamp(28px,3vw,40px);margin:0 0 14px}
+.partner-copy>p:not(.eyebrow){max-width:760px;color:#43534b}
+.partner-note{font-size:13px;color:#69756d!important;border-left:3px solid #cf653f;padding-left:13px;margin:18px 0}
+.partner-status{display:block;color:#637067;font-size:13px;margin-top:14px}
+#partner-platform-link[hidden]{display:none}
+@media(max-width:640px){.partner-initiative-inner{grid-template-columns:1fr;gap:16px}.partner-mark{width:54px;height:54px;font-size:34px}}
 
-/* Página pública de apresentação do Cardápio Inclusivo. */
-.commercial-page{background:#faf5eb}
-.commercial-hero{background:var(--green);color:#fff;padding:76px 0 80px}
-.commercial-hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.75fr);gap:60px;align-items:center}
-.commercial-hero h1{color:#fff;font-size:clamp(44px,5vw,74px);line-height:1.06;max-width:850px}
-.commercial-hero .lead{color:#e9f0ec;font-size:19px;max-width:730px;line-height:1.65}
-.commercial-hero .hero-actions{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
-.commercial-hero-note{background:#fff9f0;color:var(--green);padding:34px;border-radius:24px;box-shadow:var(--shadow)}
-.commercial-hero-note h2{font-size:30px}
-.commercial-hero-note p{color:#4f605b}
-.commercial-hero-note a{color:var(--coral-dark);font-weight:800}
-.commercial-section{padding:72px 0}
-.commercial-section h2{font-size:clamp(32px,3.2vw,48px);margin-bottom:18px}
-.commercial-intro{max-width:820px;color:var(--muted);font-size:18px;margin-bottom:35px}
-.commercial-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.commercial-feature{background:#fff;border:1px solid #e9e0d3;border-radius:22px;padding:28px;box-shadow:var(--shadow)}
-.commercial-feature .feature-num{font-weight:900;color:var(--coral);letter-spacing:2px;margin-bottom:15px}
-.commercial-feature h3{font-size:25px}
-.commercial-feature p{color:var(--muted);margin-bottom:0}
-.commercial-pricing{background:#f4ede1;border-top:1px solid #e5d9ca;border-bottom:1px solid #e5d9ca}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
-.pricing-card{background:#fffdfa;border:1px solid #e6dccc;border-radius:25px;padding:30px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
-.pricing-card.emphasis{border:2px solid var(--coral)}
-.pricing-chip{align-self:flex-start;color:var(--coral-dark);background:#f9e4d7;padding:7px 12px;border-radius:100px;font-size:12px;letter-spacing:.8px;font-weight:900;text-transform:uppercase}
-.pricing-card h3{font-size:29px;margin:5px 0}
-.pricing-card .price{color:var(--green);font-size:44px;font-weight:800;letter-spacing:-1px;line-height:1.1}
-.pricing-card .price small{font-size:15px;color:var(--muted);font-weight:600;letter-spacing:0}
-.pricing-card p{color:var(--muted);font-size:16px;flex:1}
-.pricing-card .btn{align-self:flex-start;font-size:14px}
-.commercial-footnote{color:#6e6760;font-size:13px;margin-top:22px;max-width:980px}
-.commercial-cta{text-align:center;max-width:850px;margin:0 auto}
-.commercial-cta p{color:var(--muted);font-size:18px}
-.commercial-cta .btn{margin-top:10px}
-@media(max-width:950px){.commercial-hero-grid{grid-template-columns:1fr;gap:26px}.pricing-grid,.commercial-features{grid-template-columns:1fr}.commercial-hero{padding:50px 0}.commercial-section{padding:44px 0}}
+/* Ajuste aprovado: propostas mais objetivas e faixa de diretrizes do Cardápio Inclusivo. */
+.site-menu a[href="#cardapio-inclusivo"]{white-space:nowrap}
+.proposals-section{padding:48px 0 34px}
+.proposals-layout{grid-template-columns:minmax(220px,.92fr) minmax(0,2fr) minmax(230px,.9fr);gap:22px;align-items:center}
+.proposals-intro h2{font-size:clamp(36px,2.8vw,50px);line-height:1.03}
+.proposals-intro>p:not(.eyebrow){font-size:16px;line-height:1.55}
+.proposal-cards{gap:16px;align-items:stretch}
+.proposal-card{display:flex;flex-direction:column;border-radius:22px}
+.proposal-visual{height:165px;padding:0;background-size:cover;background-position:center}
+.visual-1{background-image:url('assets/card-ingredientes-app.webp')}
+.visual-2{background-image:url('assets/card-opcoes-inclusivas.webp')}
+.proposal-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.proposal-id{display:inline-flex;align-self:flex-start;background:#e8edcf;color:#173d30;border-radius:30px;padding:6px 12px;font-size:13px;font-weight:800;margin-bottom:8px}
+.proposal-body h3{font-size:clamp(21px,1.8vw,27px);line-height:1.1;margin:0 0 8px}
+.proposal-body p{font-size:15px;line-height:1.45;min-height:68px;margin:0 0 16px;color:#4f5d59}
+.proposal-support{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:10px 18px;border-radius:999px;background:#d45f35;color:#fff;text-decoration:none;font-weight:800;font-size:18px;box-shadow:0 5px 12px #b74f3022}
+.proposal-support:hover,.proposal-support:focus-visible{background:#b94e2d;transform:translateY(-1px)}
+.proposal-support b{font-size:22px;font-weight:500;margin-left:auto}
+.proposal-support span{margin-right:auto}
+.proposal-why h3{font-size:clamp(32px,2.7vw,43px);line-height:1.04}
+.proposal-why p{font-size:16px;line-height:1.55}
+.proposal-why ul{gap:13px}
+.cardapio-guidance{padding:10px 0 42px;background:#fbf7ef}
+.cardapio-guidance-inner{display:grid;grid-template-columns:70px auto minmax(260px,1fr) auto;gap:22px;align-items:center;background:#eff0dc;border-radius:28px;padding:20px 28px}
+.cardapio-symbol{width:58px;height:58px;display:grid;place-items:center;border:3px solid #174331;border-radius:12px;color:#174331;font-size:38px;line-height:1}
+.cardapio-guidance h2{font-size:clamp(26px,2.4vw,38px);margin:0;white-space:nowrap}
+.cardapio-guidance p{font-size:16px;line-height:1.5;margin:0;color:#35443d}
+.cardapio-guidance-link{display:inline-flex;align-items:center;gap:12px;border:2px solid #174331;border-radius:999px;padding:12px 20px;color:#174331;text-decoration:none;font-weight:800;white-space:nowrap}
+.cardapio-guidance-link:hover,.cardapio-guidance-link:focus-visible{background:#174331;color:#fff}
+@media(max-width:1220px){.proposals-layout{grid-template-columns:1fr;gap:24px}.proposal-why{padding-top:0}.proposal-why ul{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.proposal-cards{grid-template-columns:1fr}.proposal-visual{height:190px}.proposal-body p{min-height:0}.proposal-why ul{grid-template-columns:1fr}.cardapio-guidance-inner{grid-template-columns:54px 1fr;gap:12px 16px;padding:20px}.cardapio-symbol{width:48px;height:48px;font-size:30px}.cardapio-guidance h2{white-space:normal;font-size:27px}.cardapio-guidance p,.cardapio-guidance-link{grid-column:1/-1}.cardapio-guidance-link{justify-content:center}}

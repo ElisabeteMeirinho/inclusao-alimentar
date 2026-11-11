@@ -8,7 +8,9 @@
   <meta name="theme-color" content="#163c30" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
+  <script defer src="config-parceiro.js"></script>
   <script defer src="script.js"></script>
+  <script defer src="script-parceiro.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para conteúdo</a>
@@ -29,7 +31,7 @@
         <a href="#causa">Nossa Causa</a>
         <a href="#restricoes">Entenda as Restrições</a>
         <a href="#propostas">As Propostas</a>
-        <a href="cardapio/apresentacao.html">Cardápio Inclusivo</a>
+        <a href="#cardapio-inclusivo">Cardápio Inclusivo</a>
         <a href="#contato">Contato</a>
       </nav>
 
@@ -111,36 +113,27 @@
         <div class="proposals-intro">
           <p class="eyebrow">NOSSAS PROPOSTAS</p>
           <h2>Duas ideias legislativas<br>por uma alimentação<br>mais inclusiva.</h2>
-          <p>Propostas encaminhadas ao Senado Federal pelo programa e-Cidadania. Acompanhe a situação de cada ideia e as orientações sobre apoio diretamente nas páginas oficiais do Senado Federal.</p>
-          <a class="btn btn-primary" href="#proposta-seguranca">Conheça as duas propostas <span class="proposal-arrow-desktop" aria-hidden="true">→</span><span class="proposal-arrow-mobile" aria-hidden="true">↓</span></a>
+          <p>Propostas encaminhadas ao Senado Federal pelo programa e-Cidadania. Acompanhe, participe e apoie diretamente.</p>
         </div>
 
         <div class="proposal-cards">
           <article class="proposal-card" id="proposta-seguranca">
-            <div class="proposal-visual visual-1">
-              <span class="proposal-number green">01</span>
-              <div class="proposal-visual-text">CARDÁPIO</div>
-            </div>
+            <div class="proposal-visual visual-1" role="img" aria-label="Prato de comida ao lado de uma tela de aplicativo com ingredientes e indicações visuais"></div>
             <div class="proposal-body">
+              <span class="proposal-id">Proposta 252857</span>
               <h3>Segurança Alimentar</h3>
               <p>Divulgação de ingredientes e alergênicos em restaurantes, padarias e estabelecimentos similares.</p>
-              <span class="status-badge">Situação e apoios: consulte o Senado</span>
-              <div class="proposal-meta">Apresentada em 27/10/2026 · Ideia nº 252857</div>
-              <a class="proposal-link" aria-label="Consultar a proposta Segurança Alimentar, ideia 252857, no Senado Federal (abre em nova aba)" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252857" target="_blank" rel="noopener noreferrer">Consultar no Senado <span aria-hidden="true">↗</span></a>
+              <a class="proposal-support" aria-label="Apoie a proposta Segurança Alimentar, número 252857, no Senado Federal" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252857" target="_blank" rel="noopener noreferrer">♡ <span>Apoie</span> <b aria-hidden="true">→</b></a>
             </div>
           </article>
 
           <article class="proposal-card" id="proposta-inclusao">
-            <div class="proposal-visual visual-2">
-              <span class="proposal-number coral">02</span>
-              <div class="proposal-visual-text">OPÇÕES<br>PARA TODOS</div>
-            </div>
+            <div class="proposal-visual visual-2" role="img" aria-label="Prato de comida acompanhado de opções alimentares inclusivas"></div>
             <div class="proposal-body">
+              <span class="proposal-id">Proposta 252859</span>
               <h3>Inclusão Alimentar</h3>
               <p>Opções inclusivas em restaurantes e estabelecimentos similares.</p>
-              <span class="status-badge">Situação e apoios: consulte o Senado</span>
-              <div class="proposal-meta">Apresentada em 27/10/2026 · Ideia nº 252859</div>
-              <a class="proposal-link" aria-label="Consultar a proposta Inclusão Alimentar, ideia 252859, no Senado Federal (abre em nova aba)" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252859" target="_blank" rel="noopener noreferrer">Consultar no Senado <span aria-hidden="true">↗</span></a>
+              <a class="proposal-support" aria-label="Apoie a proposta Inclusão Alimentar, número 252859, no Senado Federal" href="https://www12.senado.leg.br/ecidadania/visualizacaoideia?id=252859" target="_blank" rel="noopener noreferrer">♡ <span>Apoie</span> <b aria-hidden="true">→</b></a>
             </div>
           </article>
         </div>
@@ -154,6 +147,15 @@
             <li><strong>Inclusão alimentar</strong><span>beneficia toda a sociedade.</span></li>
           </ul>
         </aside>
+      </div>
+    </section>
+
+    <section id="cardapio-inclusivo" class="cardapio-guidance">
+      <div class="shell cardapio-guidance-inner">
+        <div class="cardapio-symbol" aria-hidden="true">♧</div>
+        <h2>Cardápio Inclusivo</h2>
+        <p>Orientações para restaurantes e empresas adotarem em seus aplicativos e sites opções mais inclusivas e informações claras.</p>
+        <a href="#contato" class="cardapio-guidance-link">Ver orientações <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -224,7 +226,6 @@
         <a href="#inicio">Início</a>
         <a href="#causa">Nossa Causa</a>
         <a href="#propostas">As Propostas</a>
-        <a href="cardapio/apresentacao.html">Cardápio Inclusivo</a>
         <a href="#restricoes">Entenda as Restrições</a>
         <a href="#contato">Contato</a>
       </div>
