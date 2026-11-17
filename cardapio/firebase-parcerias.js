@@ -1,26 +1,32 @@
 // Autenticacao e solicitacoes reais, com dados compartilhados no Firestore.
 // IMPORTANTE: a seguranca depende das regras publicadas em firestore.rules.
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js';
+import { initializeApp, getApps, getApp } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js';
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js';
 import { getFirestore, doc, getDoc, getDocs, collection, setDoc, updateDoc, writeBatch, serverTimestamp } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js';
 const $=id=>document.getElementById(id);
 const page=document.body.dataset.page;
 const cfg=window.INCLUSAO_FIREBASE_CONFIG||{};
-const configured=cfg.apiKey&&!cfg.apiKey.startsWith('PREENCHA_')&&cfg.projectId&&!cfg.projectId.startsWith('PREENCHA_')&&cfg.authDomain&&!cfg.authDomain.startsWith('PREENCHA_')&&cfg.appId&&!cfg.appId.startsWith('PREENCHA_');
+const configured=['apiKey','authDomain','projectId','appId'].every(key=>typeof cfg[key]==='string'&&cfg[key].trim()&&!/^PREENCHA_|^YOUR_|^<|^\{\{/i.test(cfg[key].trim()));
 const esc=s=>String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const names={pending:'Aguardando avaliacao',approved:'Aprovada',rejected:'Recusada',suspended:'Suspensa'};
 const benefits={base:'Mensalidade base (proposta)',reduced:'Mensalidade reduzida (proposta)',free:'Parceira gratuita / isenta'};
 const stamp=t=>t?.toDate?.()?.toLocaleString('pt-BR')||'Data indisponivel';
 function msg(id,t,isError=false){const el=$(id);if(el){el.className='alert '+(isError?'error':'good');el.textContent=t;}}
 function show(el,on){$(el)?.classList.toggle('hidden',!on);}
-function failure(e){const k=e?.code||'';return ({'auth/email-already-in-use':'Este e-mail ja esta cadastrado.','auth/invalid-email':'E-mail invalido.','auth/invalid-credential':'E-mail ou senha incorretos.','auth/weak-password':'Senha muito fraca.','auth/unauthorized-domain':'Dominio nao autorizado no Firebase Authentication.','permission-denied':'Permissao negada. Confira as regras do Firestore e a confirmacao do e-mail.'})[k]||e.message||'Erro desconhecido';}
+function setFirebaseStatus(text,state='pending'){
+ const el=$('firebase-status');if(!el)return;
+ el.textContent=text;
+ el.className=state==='error'?'alert error':state==='ok'?'alert good':'muted';
+ el.dataset.state=state;
+}
+function failure(e){const k=e?.code||'';return ({'auth/email-already-in-use':'Este e-mail já está cadastrado.','auth/invalid-email':'E-mail inválido.','auth/invalid-credential':'E-mail ou senha incorretos.','auth/weak-password':'Senha muito fraca.','auth/unauthorized-domain':'Domínio não autorizado no Firebase Authentication.','auth/network-request-failed':'Falha de rede ao acessar o Firebase. Verifique sua conexão.','auth/operation-not-allowed':'O login por e-mail e senha ainda não está ativado no Firebase Authentication.','auth/too-many-requests':'Muitas tentativas. Aguarde um pouco e tente novamente.','permission-denied':'Permissão negada. Confira as regras do Firestore e a confirmação do e-mail.','firestore/permission-denied':'Permissão negada. Confira as regras do Firestore e a confirmação do e-mail.','unavailable':'O Firestore está indisponível no momento. Tente novamente.','failed-precondition':'O Firestore precisa de uma configuração adicional no Console Firebase.'})[k]||e.message||'Erro desconhecido';}
 if(!configured){show('setup',true);show('auth-forms',false);show('admin-login',false);throw new Error('Configure cardapio/config.js antes de usar.');}
-const app=initializeApp(cfg), auth=getAuth(app),db=getFirestore(app);
+const app=getApps().length?getApp():initializeApp(cfg), auth=getAuth(app),db=getFirestore(app);
 let user=null, rows=[];
 $('signin')?.addEventListener('submit',async e=>{e.preventDefault();const b=e.target.querySelector('button');b.disabled=true;try{await signInWithEmailAndPassword(auth,$('si-email').value.trim(),$('si-password').value);msg('auth-note','Login realizado.');}catch(err){msg('auth-note',failure(err),true)}finally{b.disabled=false;}});
 $('signup')?.addEventListener('submit',async e=>{e.preventDefault();const b=e.target.querySelector('button');b.disabled=true;try{const r=await createUserWithEmailAndPassword(auth,$('su-email').value.trim(),$('su-password').value);await sendEmailVerification(r.user);msg('auth-note','Conta criada. Confira o e-mail de verificacao, confirme e depois saia e entre novamente.');}catch(err){msg('auth-note',failure(err),true)}finally{b.disabled=false;}});
 $('logout')?.addEventListener('click',async()=>{await signOut(auth);location.reload();});
-onAuthStateChanged(auth,async u=>{user=u;try{if(page==='company')await company();else await admin();}catch(err){msg(page==='company'?'request-note':'auth-note',failure(err),true);}});
+onAuthStateChanged(auth,async u=>{user=u;window.dispatchEvent(new Event('inclusao:firebase-ready'));setFirebaseStatus(u?'Conta identificada pelo Firebase. Verificando permissões…':'Módulo Firebase carregado. Entre ou crie uma conta para continuar.','ok');try{if(page==='company')await company();else await admin();}catch(err){const detail=failure(err);setFirebaseStatus('O Firebase foi inicializado, mas não foi possível consultar os dados: '+detail,'error');msg(page==='company'?'request-note':'auth-note',detail,true);}});
 async function company(){
  const active=!!user;
  show('auth-forms',!active);show('logout',active);show('request-panel',active);
