@@ -217,7 +217,10 @@ p{margin:0 0 14px;line-height:1.58}
 .partner-copy h2{font-size:clamp(28px,3vw,40px);margin:0 0 14px}
 .partner-copy>p:not(.eyebrow){max-width:760px;color:#43534b}
 .partner-note{font-size:13px;color:#69756d!important;border-left:3px solid #cf653f;padding-left:13px;margin:18px 0}
-.partner-status{display:block;color:#637067;font-size:13px;margin-top:14px}
+.partner-status{display:block;color:#637067;font-size:13px;margin-top:14px;line-height:1.5}
+.partner-platform-link{display:inline-flex;align-items:center;gap:10px;margin-top:8px;padding:13px 19px;border-radius:999px;background:#153c30;color:#fffaf2;text-decoration:none;font-weight:800;transition:transform .18s ease,background .18s ease}
+.partner-platform-link:hover,.partner-platform-link:focus-visible{background:#0f2f27;transform:translateY(-1px);outline-offset:3px}
+.partner-platform-link span{font-size:18px;line-height:1}
 #partner-platform-link[hidden]{display:none}
 @media(max-width:640px){.partner-initiative-inner{grid-template-columns:1fr;gap:16px}.partner-mark{width:54px;height:54px;font-size:34px}}
 
